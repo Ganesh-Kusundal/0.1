@@ -23,4 +23,11 @@ class OrderServiceTest {
         Optional<Order> order = orderService.getOrder(001l);
         assertEquals(order.get().getProductList().get(0), OrderRepo.orderList.get(0).getProductList().get(0));
     }
+
+    @Test
+    public void test_getOrderWithOffer() {
+        OrderService orderService = new OrderService();
+        Optional<Order> order = orderService.getOrder(001l, "Apple", "ByOneGetOneFree");
+        assertEquals(order.get().getOrderTotal(), 425d);
+    }
 }

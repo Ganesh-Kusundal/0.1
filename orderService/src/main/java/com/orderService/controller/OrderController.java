@@ -28,4 +28,14 @@ public class OrderController {
             return order.get();
         return null;
     }
+
+    @GetMapping(value = "/orders/{id}/{product}/{offer}")
+    @ResponseBody
+    public Order order(@PathVariable String id,@PathVariable String product, @PathVariable String offer) {
+        OrderServiceI orderServiceI = new OrderService();
+        Optional<Order> order = orderServiceI.getOrder(Long.parseLong(id), product, offer);
+        if (order.isPresent())
+            return order.get();
+        return null;
+    }
 }

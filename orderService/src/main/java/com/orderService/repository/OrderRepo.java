@@ -12,7 +12,7 @@ public class OrderRepo {
     static {
         List<Product> productList = List.of(
                 Product.builder().id(100l).name("Apple").price(60d).quantity(10).build(),
-                Product.builder().id(101l).name("Apple").price(25d).quantity(5).build());
+                Product.builder().id(101l).name("Orange").price(25d).quantity(5).build());
 
         Order order1 = new Order(001l, productList);
         order1.calculateOrderTotal();

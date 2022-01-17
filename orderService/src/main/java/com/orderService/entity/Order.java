@@ -1,5 +1,6 @@
 package com.orderService.entity;
 
+import com.orderService.model.IOffer;
 import lombok.Data;
 import lombok.ToString;
 
@@ -20,6 +21,12 @@ public class Order {
 
     public void calculateOrderTotal() {
         orderTotal=  productList.stream().
-                mapToDouble(product -> product.getPrice() * product.getQuantity()).sum();
+                mapToDouble(Product::calculateProductPrice).sum();
+    }
+
+    public void applyOffer(IOffer offer, String productName) {
+        this.getProductList().stream()
+                .filter(Product.isProduct(productName))
+                .forEach(offer::applyOffer);
     }
 }

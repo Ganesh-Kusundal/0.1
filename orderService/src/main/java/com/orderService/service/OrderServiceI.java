@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface OrderServiceI {
     List<Order> getOrderDetails();
     Optional<Order> getOrder(Long id);
+    Optional<Order> getOrder(Long id, String Offer, String productName);
 }
