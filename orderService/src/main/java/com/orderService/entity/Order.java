@@ -4,12 +4,18 @@ import com.orderService.model.IOffer;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Data
 @ToString
+@Entity
+@Table(name = "order_table")
 public class Order {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    @OneToMany(targetEntity=Product.class, mappedBy="id", fetch= FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Product> productList;
     private Double orderTotal;
 

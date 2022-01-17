@@ -2,13 +2,15 @@ package com.orderService.repository;
 
 import com.orderService.entity.Order;
 import com.orderService.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepo {
     public static List<Order> orderList = new ArrayList<>();
-
+    @Autowired
+    private static OrderRepository orderRepository;
     static {
         List<Product> productList = List.of(
                 Product.builder().id(100l).name("Apple").price(60d).quantity(10).build(),
